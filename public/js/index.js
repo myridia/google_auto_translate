@@ -1,4 +1,6 @@
 window.onload = function () {
+  set_links();
+
   document.querySelector("#reset_cookie").addEventListener(
     "click",
     function () {
@@ -94,4 +96,9 @@ function get_host(ext = "html") {
     }
   }
   return "";
+}
+
+function set_links() {
+  const host = get_host();
+  console.log(host);
 }
