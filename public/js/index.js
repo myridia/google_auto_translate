@@ -30,7 +30,7 @@ function gtranslate_init() {
   let translate = new google.translate.TranslateElement(
     {
       pageLanguage: "de",
-      includedLanguages: "en,es,da,th",
+      includedLanguages: "en,es,da,th,ru",
       autoDisplay: false,
       multilanguagePage: true,
     },
