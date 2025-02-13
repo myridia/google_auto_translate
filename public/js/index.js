@@ -1,3 +1,7 @@
+/*
+  Function what get called by googles translator file request
+  It will initiate the Google Language via the 'google.translate.TranslateElement' class
+*/
 function gtranslate_init() {
   let translate = new google.translate.TranslateElement(
     {
@@ -9,28 +13,38 @@ function gtranslate_init() {
     "google_translate_element",
   );
 
-  const _lang = getCookie("googtrans");
+  const _lang = get_cookie("googtrans");
   let c = document.querySelector("#cookie");
   c.textContent = _lang;
-  if (!_lang) {
-    console.log(_lang);
-    //    document.location.href = document.location.href + "#googtrans(de|en)";
+
+  if (_lang === "") {
+    console.log("...cookie is not set ");
+    const host = get_host();
+    if (host) {
+      let lang = host.split(".")[0];
+      if (lang === "dk") {
+        lang = "da";
+      }
+      //document.location.href =
+      //document.location.href + "#googtrans(de|" + lang + ")";
+      console.log("...reload page to set cookie");
+      set_cookie("googtrans", "/de/" + lang);
+
+      let x = setTimeout(() => {
+        if (get_cookie("googtrans")) {
+          console.log("...reload page to set cookie");
+          window.location.reload();
+        }
+      }, 4 * 1000);
+    }
   }
-  //let s = document.querySelector("#google_translate_element select");
-  //s.value = "th";
-  //s.dispatchEvent(new Event("change", { bubbles: true }));
-  //  setCookie("googtrans", "/de/en", 1);
 }
 
 /*
-function setCookie(key, value, expiry) {
-  var expires = new Date();
-  expires.setTime(expires.getTime() + expiry * 24 * 60 * 60 * 1000);
-  document.cookie = key + "=" + value + ";expires=" + expires.toUTCString();
-}
-  */
-
-function getCookie(c_name) {
+  Function to look up for a browser cookie.
+  It takes a cookie name and give back its value 
+*/
+function get_cookie(c_name) {
   if (document.cookie.length > 0) {
     c_start = document.cookie.indexOf(c_name + "=");
     if (c_start != -1) {
@@ -40,6 +54,23 @@ function getCookie(c_name) {
         c_end = document.cookie.length;
       }
       return unescape(document.cookie.substring(c_start, c_end));
+    }
+  }
+  return "";
+}
+
+function set_cookie(c_name, c_value, exp_days) {
+  let date = new Date();
+  date.setTime(date.getTime() + exp_days * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = c_name + "=" + c_value + "; " + expires + "; path=/";
+}
+
+function get_host(ext = "html") {
+  let u = String(location).split("/");
+  for (let i = 1; i < u.length; i++) {
+    if (u[i].indexOf(".") > 0 && u[i].indexOf(ext) < 0) {
+      return u[i];
     }
   }
   return "";
