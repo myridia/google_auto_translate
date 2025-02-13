@@ -1,3 +1,14 @@
+window.onload = function () {
+  document.querySelector("#reset_cookie").addEventListener(
+    "click",
+    function () {
+      console.log("...reset cookie");
+      set_cookie("googtrans", "/de/de", 1);
+    },
+    false,
+  );
+};
+
 /*
   Function what get called by googles translator file request
   It will initiate the Google Language via the 'google.translate.TranslateElement' class
@@ -28,7 +39,7 @@ function gtranslate_init() {
       //document.location.href =
       //document.location.href + "#googtrans(de|" + lang + ")";
       console.log("...reload page to set cookie");
-      set_cookie("googtrans", "/de/" + lang);
+      set_cookie("googtrans", "/de/" + lang, 1);
 
       let x = setTimeout(() => {
         if (get_cookie("googtrans")) {
@@ -64,6 +75,15 @@ function set_cookie(c_name, c_value, exp_days) {
   date.setTime(date.getTime() + exp_days * 24 * 60 * 60 * 1000);
   const expires = "expires=" + date.toUTCString();
   document.cookie = c_name + "=" + c_value + "; " + expires + "; path=/";
+  document.cookie =
+    c_name +
+    "=" +
+    c_value +
+    "; " +
+    expires +
+    "; path=/" +
+    "; domain = translate.local" +
+    ";";
 }
 
 function get_host(ext = "html") {
