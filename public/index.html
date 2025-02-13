@@ -7,31 +7,28 @@
     <link rel="icon" type="image/png" href="./favicon.png">
     <style>#google_translate_element,.skiptranslate{display:none;}body{top:0!important;}</style>
   </head>
-  <body class="theme-default">
+  <body style="background-color: #f3ddbf">
     <div id="container">
       <div id="google_translate_element"></div>
 
-      <div class="notranslate">
-<h3>Demo Main Page</h3>		
-<a href="https://de.translate.local">https://de.translate.local</a><br>
-
-<h3>With Cookie setter</h3>	
-<a href="https://de.translate.local#googtrans(de|es)">https://es.translate.local#googtrans(de|es)</a><br>
-<a href="https://de.translate.local#googtrans(de|en)">https://en.translate.local#googtrans(de|en)</a><br>
-<a href="https://de.translate.local#googtrans(de|da)">https://dk.translate.local#googtrans(de|da)</a> <br>
-<a href="https://de.translate.local#googtrans(de|th)">https://th.translate.local#googtrans(de|th)</a> <br>
-
-<h3>Without Cookie setter, but trying to detect by domain name</h3>
-<a href="https://de.translate.local">https://de.translate.local</a><br>
-<a href="https://es.translate.local">https://es.translate.local</a><br>
-<a href="https://en.translate.local">https://en.translate.local</a><br>
-<a href="https://dk.translate.local">https://dk.translate.local</a> <br>
-<a href="https://th.translate.local">https://th.translate.local</a> <br>
-</div>
+<h3 class="notranslate" >Demo Main Page <em id="main_page"></em></h3>		
 
 
-<h3 class="notranslate">Cookie is set to: <en  id="cookie">none</en></h3>      
+
+<h3 class="notranslate">Cookie is set to: <em  id="cookie">none</em></h3>      
 <button class="notranslate" id="reset_cookie">Reset Cookie gootrans</button>
+
+
+<h3>Links with Cookie setter</h3>	
+<ul id="cookie_list" class="notranslate" >
+</ul>
+
+<h3>Subdomain Links Without Cookie setter, but trying to detect by domain name</h3>
+<ul id="domain_list" class="notranslate">
+</ul>
+
+
+
 
 
 <div>

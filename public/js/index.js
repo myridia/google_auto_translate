@@ -1,4 +1,17 @@
 window.onload = function () {
+  let protocol = location.protocol !== "https:" ? "http" : "https";
+  const languages = ["en", "es", "da", "th", "ru"];
+  const domains = [
+    "127.0.0.1",
+    "en.translate.local",
+    "de.translate.local",
+    "es.translate.local",
+    "da.translate.local",
+    "th.translate.local",
+    "ru.translate.local",
+  ];
+  set_links(languages, domains, protocol);
+
   document.querySelector("#reset_cookie").addEventListener(
     "click",
     function () {
@@ -94,4 +107,47 @@ function get_host(ext = "html") {
     }
   }
   return "";
+}
+
+function set_links(languages, domains, protocol) {
+  const host = get_host();
+
+  let ulc = document.querySelector("#cookie_list");
+  if (ulc) {
+    for (let x = 0; x <= languages.length - 1; x++) {
+      let li = document.createElement("LI");
+      let a = document.createElement("A");
+      let link =
+        protocol + "://" + host + "#googtrans(de|" + languages[x] + ")";
+      a.setAttribute("href", link);
+      a.innerHTML = link;
+      a.setAttribute("target", "_blank");
+      li.appendChild(a);
+      ulc.appendChild(li);
+    }
+  }
+
+  let ul = document.querySelector("#domain_list");
+  if (ul) {
+    if (domains.includes(host)) {
+      for (let x = 0; x <= domains.length - 1; x++) {
+        let li = document.createElement("LI");
+        let a = document.createElement("A");
+        let link = protocol + "://" + domains[x];
+        a.setAttribute("href", link);
+        a.innerHTML = link;
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+    }
+  }
+
+  let m = document.querySelector("#main_page");
+  if (m) {
+    let a = document.createElement("A");
+    let link = protocol + "://" + host;
+    a.setAttribute("href", link);
+    a.innerHTML = link;
+    m.appendChild(a);
+  }
 }
