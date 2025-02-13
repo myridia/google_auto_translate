@@ -1,10 +1,11 @@
 # google_auto_translate
 
-Example to show a Client based autotranslate with the Google Translater
+Example to show a client based autotranslate(browser) with the Google Translater.
 
 * Hiding the Google Translation Tool Bar
 * Setting Translation via Cookie setter
 * Can Detect Language based subdomains and set the language cookie, like, en.foo.com es.foo.bar etc...
+* Reset Cookie
 
 ## Demo Page
 https://translate.myridia.com/
