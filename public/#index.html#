@@ -13,9 +13,11 @@
 
       <div class="notranslate">
 <h3>Demo Main Page</h3>		
-<a href="https://de.translate.local">https://de.translate.local</a><br>
+<a id="main_page" href="https://de.translate.local">https://de.translate.local</a><br>
 
-<h3>Links with Cookie setter</h3>	
+<h3>Links with Cookie setter</h3>
+<div id="pages_with_cookie_">
+</div>
 <a href="https://de.translate.local#googtrans(de|es)">https://es.translate.local#googtrans(de|es)</a><br>
 <a href="https://de.translate.local#googtrans(de|en)">https://en.translate.local#googtrans(de|en)</a><br>
 <a href="https://de.translate.local#googtrans(de|da)">https://dk.translate.local#googtrans(de|da)</a> <br>
