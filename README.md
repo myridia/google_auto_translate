@@ -8,7 +8,8 @@ Example to show a client based autotranslate(browser) with the Google Translater
 * Reset Cookie
 
 ## Demo Page
-https://translate.myridia.com/
+https://google-auto-translate
+.myridia.com/
 
 ## References:
 https://gist.github.com/artturik/15bed885bcec6faa95eb73acb2e2ae54
