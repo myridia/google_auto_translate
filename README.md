@@ -1,3 +1,5 @@
+<img src="google_auto_translate.svg" alt="google_auto_translate" width="120">
+
 # google_auto_translate
 
 Example to show a client based autotranslate(browser) with the Google Translater.
